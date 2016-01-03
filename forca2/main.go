@@ -49,7 +49,7 @@ func main() {
 		}
 
 		fmt.Scanln(&chute)
-		if strings.Contains(palavraSecreta, chute) {
+		if strings.ContainsAny(palavraSecreta, chute) {
 			fmt.Println(acertou)
 			geraSequencia(palavraSecreta, chute)
 			continue
