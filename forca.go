@@ -9,7 +9,10 @@ import (
 )
 
 const (
-	totalDeVidas = 3
+	fimDeJogoSucesso = "Fim de Jogo, você venceu!!!"
+	fimDeJogoFalha   = "Fim de Jogo, você perdeu."
+	acertou          = "Você acertou!!!"
+	errou            = "Você errou."
 )
 
 var (
@@ -40,45 +43,45 @@ func main() {
 		fmt.Println(strings.Join(acertos, " "))
 
 		if palavraSecreta == strings.Join(acertos, "") {
-			fmt.Println("Fim de Jogo, você venceu")
+			fmt.Println(fimDeJogoSucesso)
 			break
 		}
 
 		fmt.Scanln(&chute)
 		if strings.ContainsAny(palavraSecreta, chute) {
-			fmt.Println("Você acertou")
+			fmt.Println()
 			geraSequencia(palavraSecreta, chute)
 			continue
 		}
-		fmt.Println("Você errou")
+		fmt.Println(errou)
 		vidas--
 	}
 
 	if vidas < 0 {
-		fmt.Println("Fim de Jogo, você perdeu")
+		fmt.Println(fimDeJogoFalha)
 	}
 
 }
 
 func game(vidas int64) {
 	if vidas < 1 {
-		fmt.Println("Fim de Jogo, você perdeu")
+		fmt.Println(fimDeJogoFalha)
 		return
 	}
 
 	fmt.Println(strings.Join(acertos, " "))
 	if palavraSecreta == strings.Join(acertos, "") {
-		fmt.Println("Fim de Jogo, você venceu")
+		fmt.Println(fimDeJogoSucesso)
 		return
 	}
 
 	var chute string
 	fmt.Scanln(&chute)
 	if strings.Contains(palavraSecreta, chute) {
-		fmt.Println("Você acertou")
+		fmt.Println(acertou)
 		geraSequencia(palavraSecreta, chute)
 	} else {
-		fmt.Println("Você errou")
+		fmt.Println(errou)
 		vidas--
 	}
 	game(vidas)
