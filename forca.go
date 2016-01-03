@@ -34,6 +34,7 @@ func main() {
 	fmt.Println("Digite a letra para a palavra secreta")
 	fmt.Println("Você tem", vidas, "vidas")
 
+	// game(vidas)
 	var chute string
 	for vidas > 0 {
 		fmt.Println(strings.Join(acertos, " "))
@@ -53,9 +54,34 @@ func main() {
 		vidas--
 	}
 
-	if vidas == 0 {
+	if vidas < 0 {
 		fmt.Println("Fim de Jogo, você perdeu")
 	}
+
+}
+
+func game(vidas int64) {
+	if vidas < 1 {
+		fmt.Println("Fim de Jogo, você perdeu")
+		return
+	}
+
+	fmt.Println(strings.Join(acertos, " "))
+	if palavraSecreta == strings.Join(acertos, "") {
+		fmt.Println("Fim de Jogo, você venceu")
+		return
+	}
+
+	var chute string
+	fmt.Scanln(&chute)
+	if strings.Contains(palavraSecreta, chute) {
+		fmt.Println("Você acertou")
+		geraSequencia(palavraSecreta, chute)
+	} else {
+		fmt.Println("Você errou")
+		vidas--
+	}
+	game(vidas)
 }
 
 func geraSequencia(palavraSecreta, chute string) {
