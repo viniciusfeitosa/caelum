@@ -7,9 +7,9 @@ import (
 
 const (
 	fimDeJogoSucesso = "Fim de Jogo, você venceu!!!"
-	fimDeJogoFalha = "Fim de Jogo, você perdeu."
-	acertou = "Você acertou!!!"
-	errou = "Você errou."
+	fimDeJogoFalha   = "Fim de Jogo, você perdeu."
+	acertou          = "Você acertou!!!"
+	errou            = "Você errou."
 )
 
 var acertos []string
@@ -23,7 +23,7 @@ func init() {
 	}
 }
 
-// Play é a função inicializadora do jogo de forca 
+// Play é a função inicializadora do jogo de forca
 func Play(vidas int64) {
 	if vidas < 1 {
 		fmt.Println(fimDeJogoFalha)

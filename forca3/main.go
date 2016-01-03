@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/viniciusfeitosa/caelum/forca3/jogo"
 	"log"
 	"os"
 	"strconv"
-    "github.com/viniciusfeitosa/caelum/forca3/jogo"
 )
 
 func main() {

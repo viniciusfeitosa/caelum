@@ -5,12 +5,13 @@ import (
 	"log"
 	"os"
 	"strconv"
-    "github.com/viniciusfeitosa/caelum/forca4/jogo"
+
+	"github.com/viniciusfeitosa/caelum/forca4/jogo"
 )
 
 func main() {
 	qtdVidas := os.Args[1]
-    palavraSecreta := os.Args[2]
+	palavraSecreta := os.Args[2]
 
 	vidas, err := strconv.ParseInt(qtdVidas, 10, 64)
 	if err != nil {
@@ -19,7 +20,7 @@ func main() {
 
 	fmt.Println("Digite a letra para a palavra secreta")
 	fmt.Println("Você tem", vidas, "vidas")
-    
-    novoJogo := jogo.NewJogo(palavraSecreta, vidas)
-    novoJogo.Play()	
+
+	novoJogo := jogo.NewJogo(palavraSecreta, vidas)
+	novoJogo.Play()
 }
