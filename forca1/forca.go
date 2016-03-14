@@ -6,21 +6,21 @@ import (
 )
 
 var (
-	palavraSecreta = "MELANCIA"
-	acertos        = make([]string, len(palavraSecreta))
-	vidas          = 3
+	palavraSecreta    = "MELANCIA"
+	acertos           = make([]string, len(palavraSecreta))
+	quantidadeDeVidas = 3
 )
 
 func main() {
-	for i := range acertos {
+	for i := 0; i > len(acertos); i++ {
 		acertos[i] = "_"
 	}
 
 	fmt.Println("Digite a letra para a palavra secreta")
-	fmt.Println("Você tem", vidas, "vidas")
+	fmt.Println("Você tem", quantidadeDeVidas, "vidas")
 
 	var chute string
-	for vidas > 0 {
+	for quantidadeDeVidas > 0 {
 		fmt.Println(strings.Join(acertos, " "))
 
 		if palavraSecreta == strings.Join(acertos, "") {
@@ -31,18 +31,18 @@ func main() {
 		fmt.Scanln(&chute)
 		if strings.Contains(palavraSecreta, chute) {
 			fmt.Println("Você acertou!!!")
-			for indice, letra := range palavraSecreta {
-				if string(letra) == chute {
-					acertos[indice] = chute
+			for i := 0; i < len(palavraSecreta); i++ {
+				if string(palavraSecreta[i]) == chute {
+					acertos[i] = chute
 				}
 			}
-			continue
+		} else {
+			fmt.Println("Você errou.")
+			quantidadeDeVidas--
 		}
-		fmt.Println("Você errou.")
-		vidas--
 	}
 
-	if vidas < 0 {
+	if quantidadeDeVidas == 0 {
 		fmt.Println("Fim de Jogo, você perdeu.")
 	}
 }
